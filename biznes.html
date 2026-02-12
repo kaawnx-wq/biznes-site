@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Business Ideas - ИИ Бизнес Идеялар</title>
+    <style>
+        /* CSS ДИЗАЙН БӨЛІМІ */
+        :root {
+            --primary: #4f46e5;
+            --secondary: #25d366;
+            --dark: #1f2937;
+            --light: #f3f4f6;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #4338ca;
+        }
+
+        .result-area {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9fafb;
+            border-left: 5px solid var(--primary);
+            display: none;
+            line-height: 1.6;
+        }
+
+        .contact-section {
+            background: #fff;
+            border: 2px solid var(--secondary);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .call-btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .auth-form {
+            display: none; /* Бастапқыда жасырулы */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>🚀 AI Business Ideas</h1>
+        <button onclick="toggleAuth()" style="width: auto; padding: 5px 15px;">Кіру / Тіркелу</button>
+    </div>
+</header>
+
+<div class="container">
+    <div id="authSection" class="card auth-form">
+        <h3>Акаунтқа тіркелу</h3>
+        <input type="email" placeholder="E-mail">
+        <input type="password" placeholder="Құпия сөз">
+        <button onclick="alert('Тіркелу сәтті өтті!')">Растау</button>
+    </div>
+
+    <div class="hero">
+        <h2>Болашақ бизнесіңізді бүгін табыңыз</h2>
+        <p>Искусственный интеллект сіздің бюджетіңізге лайық идея тауып береді.</p>
+    </div>
+
+    <div class="card">
+        <h3>Идея генераторы</h3>
+        <label>Бюджетіңізді көрсетіңіз (тг):</label>
+        <input type="number" id="budgetInput" placeholder="Мысалы: 500000">
+        
+        <label>Қай сала қызықтырады?</label>
+        <select id="categorySelect">
+            <option value="IT">IT және Технология</option>
+            <option value="Сауда">Сауда (Ecommerce)</option>
+            <option value="Қызмет">Қызмет көрсету</option>
+            <option value="Өндіріс">Шағын өндіріс</option>
+        </select>
+        
+        <button onclick="getAIResult()">Идеяны көру</button>
+        <div id="resultArea" class="result-area"></div>
+    </div>
+
+    <div class="contact-section">
+        <h3>Көмек керек пе?</h3>
+        <p>Бизнес бастау бойынша сұрақтарыңыз болса, бізге хабарласыңыз:</p>
+        <a href="tel:+77715112645" class="call-btn">📞 +7 771 511 2645</a>
+        <p style="font-size: 0.8em; color: gray; margin-top: 10px;">Маманға қоңырау шалу тегін</p>
+    </div>
+</div>
+
+<script>
+    /* JAVASCRIPT ЛОГИКА БӨЛІМІ */
+    
+    function toggleAuth() {
+        const auth = document.getElementById('authSection');
+        auth.style.display = auth.style.display === 'block' ? 'none' : 'block';
+    }
+
+    async function getAIResult() {
+        const budget = document.getElementById('budgetInput').value;
+        const category = document.getElementById('categorySelect').value;
+        const resultArea = document.getElementById('resultArea');
+
+        if (!budget) {
+            alert("Өтініш, бюджетіңізді жазыңыз!");
+            return;
+        }
+
+        resultArea.style.display = 'block';
+        resultArea.innerHTML = "⌛ <b>ИИ ақпаратты талдап жатыр...</b> Күте тұрыңыз.";
+
+        // Нақты OpenAI API қосу үшін сізге сервер керек. 
+        // Қазірше браузерде жұмыс істеп тұрғандай симуляция жасаймыз:
+        
+        setTimeout(() => {
+            resultArea.innerHTML = `
+                <h4>✅ Ұсынылатын идея:</h4>
+                <p>Сіздің <b>${budget} тг</b> бюджетіңізбен <b>${category}</b> саласында мынаны бастауға болады:</p>
+                <ul>
+                    <li><b>Жоба:</b> ${category} бойынша мамандандырылған агенттік немесе онлайн дүкен.</li>
+                    <li><b>Алғашқы шығын:</b> Жарамды құралдарды сатып алу (40%), Жарнама (30%), Қосалқы шығындар (30%).</li>
+                    <li><b>Кеңес:</b> Алдымен нарықты зерттеп, Instagram арқылы тест жасап көріңіз.</li>
+                </ul>
+                <p>Толық бизнес-жоспар алу үшін тіркеліңіз.</p>
+            `;
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>
